@@ -41,6 +41,9 @@
 
     .max { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
+    /* ── ANNOUNCE ── */
+    .announce-wrap { background: var(--white); padding: 0 24px; }
+
     /* ── NAV ── */
     .nav {
       background: var(--white);
@@ -82,11 +85,14 @@
     /* ── ANNOUNCE ── */
     .announce {
       background: var(--navy);
+      max-width: var(--max);
+      margin: 0 auto;
       padding: 8px 24px;
       text-align: center;
       font-size: 12px;
       font-weight: 400;
       color: rgba(255,255,255,0.85);
+      border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     }
     .announce a { color: var(--gold); text-decoration: none; font-weight: 500; }
     .announce a:hover { text-decoration: underline; }
@@ -175,10 +181,15 @@
     .hero-btn-ghost:hover { background: rgba(255,255,255,0.2); }
 
     /* ── MEMBERSHIP ── */
-    .membership-section { background: var(--navy); }
-    .membership-inner {
+    .membership-wrap { background: var(--white); padding: 0 24px 0; }
+    .membership-section {
+      background: var(--navy);
       max-width: var(--max);
       margin: 0 auto;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .membership-inner {
       padding: 40px 24px 0;
       text-align: center;
     }
@@ -232,8 +243,6 @@
     .mem-cta:hover { background: #e8ecf5; }
     .offer-bar { background: var(--green); padding: 14px 24px; }
     .offer-inner {
-      max-width: var(--max);
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -578,8 +587,16 @@
     .soc-follow { font-size: 12px; color: var(--text-muted); margin-top: 14px; }
 
     /* ── FOOTER ── */
-    .footer { background: var(--navy); padding: 44px 24px 28px; }
-    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-wrap { background: var(--light); padding: 0 24px 24px; }
+    .footer {
+      background: var(--navy);
+      max-width: var(--max);
+      margin: 0 auto;
+      border-radius: var(--radius);
+      padding: 40px 32px 28px;
+      overflow: hidden;
+    }
+    .footer-inner { width: 100%; }
     .footer-top {
       display: grid;
       grid-template-columns: 1.2fr 1fr 1.6fr;
@@ -697,8 +714,10 @@
   </nav>
 
   <!-- ANNOUNCEMENT BAR -->
+  <div class="announce-wrap">
   <div class="announce" role="banner">
     CA summer starts now — 23 pools open May 23. &nbsp;<a href="#">Join now, pay nothing until July &rarr;</a>
+  </div>
   </div>
 
   <!-- HERO -->
@@ -720,6 +739,7 @@
   </div>
 
   <!-- MEMBERSHIP SECTION -->
+  <div class="membership-wrap">
   <section class="membership-section" aria-labelledby="membership-heading">
     <div class="membership-inner">
       <div class="eyebrow-gold">Membership</div>
@@ -745,6 +765,7 @@
       </div>
     </div>
   </section>
+  </div>
 
   <!-- CAROUSEL -->
   <section class="section section-white" aria-labelledby="carousel-heading">
@@ -910,6 +931,7 @@
   </section>
 
   <!-- FOOTER -->
+  <div class="footer-wrap">
   <footer class="footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-top">
@@ -979,6 +1001,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
 </body>
 </html>
