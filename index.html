@@ -377,7 +377,7 @@
       letter-spacing: -0.01em;
     }
     .door-main-sub { font-size: 12px; color: rgba(255,255,255,0.68); line-height: 1.5; }
-    .door-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .door-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
     .door-tile {
       border-radius: var(--radius);
       overflow: hidden;
@@ -805,47 +805,63 @@
     </div>
   </section>
 
-  <!-- FRONT DOORS -->
-  <section class="section section-light" aria-labelledby="doors-heading">
-    <div class="max">
-      <div style="margin-bottom: 18px;">
-        <div class="sec-eyebrow">Explore Columbia Association</div>
-        <h2 class="sec-hed" id="doors-heading">Find your way in</h2>
+<!-- FRONT DOORS -->
+<section class="section section-light" aria-labelledby="doors-heading">
+  <div class="inner">
+    <div style="margin-bottom: 18px;">
+      <div class="sec-eyebrow">Explore Columbia Association</div>
+      <h2 class="sec-hed" id="doors-heading">Find your way in</h2>
+    </div>
+
+    <!-- Tier 1: Resident Life -->
+    <a href="#" class="door-main">
+      <div class="door-main-bg"></div>
+      <div class="door-main-overlay"></div>
+      <div class="door-content">
+        <div class="door-tag">Start here</div>
+        <div class="door-main-hed">Resident life in Columbia</div>
+        <p class="door-main-sub">Open space, community governance, village life, sustainability — what it means to live here, not just recreate here.</p>
       </div>
-      <a href="#" class="door-main">
-        <div class="door-main-bg"></div>
-        <div class="door-main-overlay"></div>
-        <div class="door-content">
-          <div class="door-tag">Start here</div>
-          <div class="door-main-hed">Resident life in Columbia</div>
-          <p class="door-main-sub">Open space, community governance, village life, sustainability — what it means to live here</p>
+    </a>
+
+    <!-- Tier 2: Outdoor Spaces + Programs -->
+    <div class="door-grid" style="margin-bottom: 14px;">
+      <a href="#" class="door-tile dt-1" style="height: 150px;">
+        <div class="dt-overlay"></div>
+        <div class="dt-content">
+          <div class="dt-hed">Outdoor spaces &amp; sustainability</div>
+          <div class="dt-sub">Lakes, trails, playgrounds, 3,600 acres</div>
         </div>
       </a>
-      <div class="door-grid">
-        <a href="#" class="door-tile dt-1">
-          <div class="dt-overlay"></div>
-          <div class="dt-content">
-            <div class="dt-hed">Parks, pathways &amp; open space</div>
-            <div class="dt-sub">Trails, lakes, and 3,600 acres</div>
-          </div>
-        </a>
-        <a href="#" class="door-tile dt-2">
-          <div class="dt-overlay"></div>
-          <div class="dt-content">
-            <div class="dt-hed">Recreation, sports &amp; wellness</div>
-            <div class="dt-sub">Pools, fitness, racquet sports, golf</div>
-          </div>
-        </a>
-        <a href="#" class="door-tile dt-3">
-          <div class="dt-overlay"></div>
-          <div class="dt-content">
-            <div class="dt-hed">Family &amp; teen programming</div>
-            <div class="dt-sub">Camps, classes, and after-school</div>
-          </div>
-        </a>
-      </div>
+      <a href="#" class="door-tile dt-2" style="height: 150px;">
+        <div class="dt-overlay"></div>
+        <div class="dt-content">
+          <div class="dt-hed">Programs for every stage of life</div>
+          <div class="dt-sub">Classes, camps, seniors, families</div>
+        </div>
+      </a>
     </div>
-  </section>
+
+    <!-- Tier 3: Recreation + Arts -->
+    <div class="door-grid">
+      <a href="#" class="door-tile dt-3" style="height: 120px;">
+        <div class="dt-overlay"></div>
+        <div class="dt-content">
+          <div class="dt-hed">Recreation, sports &amp; wellness</div>
+          <div class="dt-sub">Pools, fitness, courts, golf</div>
+        </div>
+      </a>
+      <a href="#" class="door-tile" style="height: 120px; background: linear-gradient(135deg, #0a1a2a, #1a2a3a);">
+        <div class="dt-overlay"></div>
+        <div class="dt-content">
+          <div class="dt-hed">Arts, culture &amp; community</div>
+          <div class="dt-sub">Art center, archives, events, Lakefront Live</div>
+        </div>
+      </a>
+    </div>
+
+  </div>
+</section>
 
   <!-- COLUMBIA CARD -->
   <section class="colcard-section" aria-labelledby="colcard-heading">
