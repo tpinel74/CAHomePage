@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Columbia Association</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;1,8..60,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1C3A6E;
+      --navy-dark: #142d56;
+      --navy-deep: #0d1f3a;
+      --green: #3A7D3A;
+      --green-dark: #2d6130;
+      --gold: #E8A020;
+      --gold-dark: #412402;
+      --cream: #F9F7F2;
+      --light: #F4F6F8;
+      --white: #ffffff;
+      --text: #1a1a1a;
+      --text-mid: #4a4a4a;
+      --text-muted: #717171;
+      --border: rgba(0,0,0,0.1);
+      --max: 960px;
+      --max-prose: 680px;
+      --radius: 10px;
+      --radius-sm: 5px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .max { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+    .max-prose { max-width: var(--max-prose); margin: 0 auto; padding: 0 24px; }
+
+    /* ── NAV ── */
+    .nav {
+      background: var(--white);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-left { display: flex; align-items: center; gap: 16px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-mark { width: 28px; height: 28px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-mark span { color: #fff; font-size: 9px; font-weight: 500; }
+    .nav-name { font-size: 12px; font-weight: 500; color: var(--navy); line-height: 1.3; }
+    .nav-back { display: flex; align-items: center; gap: 5px; font-size: 12px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; border-left: 0.5px solid var(--border); padding-left: 16px; }
+    .nav-back:hover { color: var(--navy); }
+    .nav-join { background: var(--gold); color: var(--gold-dark); font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: var(--radius-sm); text-decoration: none; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--navy-deep);
+      min-height: 480px;
+      display: flex;
+      align-items: flex-end;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #1a3a20 0%, #0d2210 40%, #0d1f3a 100%);
+    }
+    .hero-img-layer {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 40%, rgba(58,125,58,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 20% 80%, rgba(28,58,110,0.3) 0%, transparent 60%);
+    }
+    .hero-trees-l { position: absolute; bottom: 0; left: 0; width: 45%; height: 200px; background: #0d2210; border-radius: 0 60% 0 0; opacity: 0.7; }
+    .hero-trees-r { position: absolute; bottom: 0; right: 0; width: 35%; height: 160px; background: #0a1a0a; border-radius: 60% 0 0 0; opacity: 0.6; }
+    .hero-trees-m { position: absolute; bottom: 0; left: 30%; width: 40%; height: 120px; background: #1a3a1a; border-radius: 50% 50% 0 0; opacity: 0.5; }
+    .hero-gradient { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,30,60,0.9) 0%, rgba(13,30,60,0.3) 50%, transparent 100%); }
+    .hero-content {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding: 60px 24px 56px;
+      max-width: calc(var(--max-prose) + 48px);
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px; display: block;
+    }
+    .hero-content h1 {
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 300;
+      color: #fff;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .hero-content h1 em { font-style: italic; color: rgba(255,255,255,0.8); }
+    .hero-sub {
+      font-size: 15px; color: rgba(255,255,255,0.65);
+      max-width: 520px; line-height: 1.65; margin-bottom: 0;
+    }
+
+    /* ── SECTION BASE ── */
+    .section { padding: 64px 0; }
+    .section-sm { padding: 48px 0; }
+    .section-white { background: var(--white); }
+    .section-cream { background: var(--cream); }
+    .section-light { background: var(--light); }
+    .section-navy { background: var(--navy); }
+    .section-deep { background: var(--navy-deep); }
+
+    /* ── TYPOGRAPHY ── */
+    .eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--green); margin-bottom: 10px; display: block;
+    }
+    .eyebrow-gold { color: var(--gold); }
+    .eyebrow-muted { color: var(--text-muted); }
+    .section-hed {
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(22px, 3.5vw, 32px);
+      font-weight: 300; color: var(--navy);
+      line-height: 1.25; letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+    .section-hed-white { color: #fff; }
+    .section-hed em { font-style: italic; }
+    .prose {
+      font-size: 15px; color: var(--text-mid);
+      line-height: 1.75; max-width: 600px;
+    }
+    .prose-center { margin: 0 auto; text-align: center; max-width: 560px; }
+    .prose + .prose { margin-top: 16px; }
+    .lead {
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(17px, 2.5vw, 20px);
+      font-weight: 300; color: var(--text);
+      line-height: 1.65; letter-spacing: -0.01em;
+    }
+
+    /* ── INTRO SECTION ── */
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .intro-img {
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, #1a3a1a 0%, #0d2210 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .intro-img-inner {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(circle at 30% 70%, rgba(58,125,58,0.4) 0%, transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(232,160,32,0.15) 0%, transparent 40%);
+    }
+    .img-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 20px 16px 14px;
+      background: linear-gradient(to top, rgba(10,25,10,0.85) 0%, transparent 100%);
+      font-size: 11px; color: rgba(255,255,255,0.6);
+      font-style: italic;
+    }
+    .img-placeholder-label {
+      position: relative; z-index: 2;
+      font-size: 11px; color: rgba(255,255,255,0.3);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+
+    /* ── SCALE REVEAL ── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 2px;
+      margin-top: 32px;
+    }
+    .stat-card {
+      background: var(--white);
+      padding: 24px 20px;
+      border-radius: 0;
+    }
+    .stat-card:first-child { border-radius: var(--radius) 0 0 var(--radius); }
+    .stat-card:last-child { border-radius: 0 var(--radius) var(--radius) 0; }
+    .stat-num {
+      font-family: 'Source Serif 4', serif;
+      font-size: 36px; font-weight: 300;
+      color: var(--navy); line-height: 1;
+      margin-bottom: 6px; letter-spacing: -0.02em;
+    }
+    .stat-unit { font-size: 16px; color: var(--green); }
+    .stat-label { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .stat-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── WHAT WE DO STRIP ── */
+    .do-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .do-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 0.5px solid var(--border);
+    }
+    .do-img {
+      height: 100px;
+      display: flex; align-items: flex-end; padding: 12px;
+    }
+    .do-1 { background: linear-gradient(135deg, #0d2210, #1a4020); }
+    .do-2 { background: linear-gradient(135deg, #0d1f3a, #1C3A6E); }
+    .do-3 { background: linear-gradient(135deg, #2a1a00, #4a3010); }
+    .do-4 { background: linear-gradient(135deg, #1a0d2a, #3a1a4a); }
+    .do-tag { background: rgba(0,0,0,0.4); color: rgba(255,255,255,0.85); font-size: 10px; font-weight: 500; padding: 3px 8px; border-radius: 20px; }
+    .do-body { padding: 14px 16px; }
+    .do-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .do-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+    /* ── INLINE SUBSCRIBE ── */
+    .subscribe-inline {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 28px 28px;
+      border: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .sub-text { flex: 1; min-width: 200px; }
+    .sub-text strong { display: block; font-size: 14px; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+    .sub-text span { font-size: 13px; color: var(--text-muted); }
+    .sub-form { display: flex; gap: 8px; flex-wrap: wrap; }
+    .sub-input {
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 8px 14px;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      width: 220px;
+    }
+    .sub-input:focus { outline: none; border-color: var(--navy); }
+    .sub-btn {
+      background: var(--navy);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      font-family: 'DM Sans', sans-serif;
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      border: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .sub-btn:hover { background: var(--navy-dark); }
+
+    /* ── ORIGIN OFFRAMP ── */
+    .origin-block {
+      background: var(--navy-deep);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+    }
+    .origin-img {
+      background: linear-gradient(160deg, #1a3a1a 0%, #0d2210 60%, #0d1f3a 100%);
+      min-height: 220px;
+      position: relative;
+      display: flex; align-items: flex-end; padding: 16px;
+    }
+    .origin-img-glow {
+      position: absolute; inset: 0;
+      background: radial-gradient(circle at 40% 40%, rgba(232,160,32,0.12) 0%, transparent 60%);
+    }
+    .origin-year {
+      font-family: 'Source Serif 4', serif;
+      font-size: 52px; font-weight: 300;
+      color: rgba(255,255,255,0.12);
+      position: absolute; top: 16px; left: 16px;
+      line-height: 1;
+    }
+    .origin-img-label {
+      position: relative; z-index: 2;
+      font-size: 11px; color: rgba(255,255,255,0.4);
+      font-style: italic;
+    }
+    .origin-body { padding: 32px 28px; }
+    .origin-eyebrow { font-size: 10px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; display: block; }
+    .origin-hed {
+      font-family: 'Source Serif 4', serif;
+      font-size: 20px; font-weight: 300;
+      color: #fff; line-height: 1.3;
+      margin-bottom: 12px; letter-spacing: -0.01em;
+    }
+    .origin-desc { font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.7; margin-bottom: 20px; }
+    .origin-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 0.5px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.85);
+      font-size: 13px; font-weight: 500;
+      padding: 8px 18px;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .origin-cta:hover { background: rgba(255,255,255,0.18); }
+
+    /* ── FRONT DOORS ── */
+    .door-main {
+      border-radius: var(--radius);
+      overflow: hidden;
+      margin-bottom: 12px;
+      min-height: 200px;
+      display: flex; align-items: flex-end;
+      padding: 28px 28px;
+      position: relative;
+      text-decoration: none;
+      display: block;
+    }
+    .door-main-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #1a2a50 0%, #0d1f3a 100%); }
+    .door-main-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,20,50,0.88) 0%, rgba(10,20,50,0.2) 100%); }
+    .door-main-content { position: relative; z-index: 2; }
+    .door-tag { display: inline-block; background: var(--gold); color: var(--gold-dark); font-size: 10px; font-weight: 500; padding: 3px 12px; border-radius: 20px; margin-bottom: 10px; }
+    .door-main-hed { font-family: 'Source Serif 4', serif; font-size: 24px; font-weight: 300; color: #fff; margin-bottom: 6px; line-height: 1.2; letter-spacing: -0.01em; }
+    .door-main-sub { font-size: 13px; color: rgba(255,255,255,0.65); max-width: 480px; line-height: 1.55; }
+    .door-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+    .door-tile {
+      border-radius: var(--radius);
+      overflow: hidden;
+      min-height: 140px;
+      display: flex; align-items: flex-end;
+      padding: 16px 18px;
+      position: relative;
+      text-decoration: none;
+    }
+    .dt-1 { background: linear-gradient(135deg, #0a1f0a, #1a3a1a); }
+    .dt-2 { background: linear-gradient(135deg, #1a1a10, #3a3010); }
+    .dt-3 { background: linear-gradient(135deg, #200a0a, #3a1010); }
+    .dt-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.25); transition: background 0.2s; }
+    .door-tile:hover .dt-overlay { background: rgba(0,0,0,0.15); }
+    .dt-content { position: relative; z-index: 2; }
+    .dt-hed { font-size: 13px; font-weight: 500; color: #fff; margin-bottom: 3px; line-height: 1.3; }
+    .dt-sub { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+    /* ── FAQ ── */
+    .faq-grid { display: flex; flex-direction: column; gap: 0; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 28px; }
+    .faq-item { background: var(--white); border-bottom: 0.5px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q { padding: 18px 20px; font-size: 14px; font-weight: 500; color: var(--navy); display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; }
+    .faq-q i { font-size: 16px; color: var(--text-muted); flex-shrink: 0; transition: transform 0.2s; }
+    .faq-a { padding: 0 20px 18px; font-size: 13px; color: var(--text-mid); line-height: 1.7; display: none; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-q i { transform: rotate(45deg); }
+    .faq-more { display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 13px; color: var(--navy); text-decoration: none; font-weight: 500; }
+    .faq-more:hover { text-decoration: underline; }
+
+    /* ── COLUMBIA CARD ── */
+    .colcard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 0.5px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .colcard-left { padding: 30px; background: var(--light); border-right: 0.5px solid var(--border); }
+    .colcard-right { padding: 30px; background: var(--white); }
+    .colcard-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; font-weight: 500; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; }
+    .badge-green { background: #EAF3DE; color: #3B6D11; }
+    .badge-blue { background: #E6F1FB; color: #185FA5; }
+    .colcard-sub-hed { font-family: 'Source Serif 4', serif; font-size: 18px; font-weight: 300; color: var(--navy); margin-bottom: 12px; line-height: 1.35; letter-spacing: -0.01em; }
+    .card-visual { background: var(--navy); border-radius: 6px; padding: 14px 18px; margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; }
+    .cv-name { font-size: 12px; font-weight: 500; color: #fff; }
+    .cv-sub { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+    .cv-chip { width: 22px; height: 16px; background: var(--gold); border-radius: 3px; }
+    .colcard-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; margin-bottom: 16px; }
+    .colcard-perks { margin-bottom: 20px; }
+    .perk { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 8px; font-size: 13px; color: var(--text-mid); line-height: 1.45; }
+    .perk-dot { width: 5px; height: 5px; border-radius: 50%; margin-top: 6px; flex-shrink: 0; }
+    .pd-green { background: var(--green); }
+    .pd-navy { background: var(--navy); }
+    .colcard-bridge { font-size: 12px; color: var(--text-mid); font-style: italic; line-height: 1.6; margin-bottom: 16px; padding: 10px 14px; background: var(--light); border-radius: var(--radius-sm); border-left: 2px solid var(--green); }
+    .btn-green { display: inline-block; background: var(--green); color: #fff; font-size: 13px; font-weight: 500; padding: 9px 22px; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s; }
+    .btn-green:hover { background: var(--green-dark); }
+    .btn-navy { display: inline-block; background: var(--navy); color: #fff; font-size: 13px; font-weight: 500; padding: 9px 22px; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s; }
+    .btn-navy:hover { background: var(--navy-dark); }
+    .btn-sub { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+    .offer-strip { background: var(--green); padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-radius: 0 0 var(--radius) var(--radius); }
+    .offer-strip-label { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 3px; }
+    .offer-strip-text { font-size: 13px; color: #fff; font-weight: 500; }
+    .offer-strip-btn { background: var(--gold); color: var(--gold-dark); font-size: 12px; font-weight: 500; padding: 7px 16px; border-radius: var(--radius-sm); text-decoration: none; white-space: nowrap; }
+
+    /* ── GOVERNANCE ── */
+    .gov-block { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .gov-text {}
+    .gov-aside { background: var(--white); border-radius: var(--radius); border: 0.5px solid var(--border); padding: 24px; }
+    .gov-stat { text-align: center; padding: 16px 0; border-bottom: 0.5px solid var(--border); }
+    .gov-stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .gov-stat-num { font-family: 'Source Serif 4', serif; font-size: 28px; font-weight: 300; color: var(--navy); }
+    .gov-stat-label { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+
+    /* ── CONTACT PATHS ── */
+    .contact-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; margin-top: 28px; }
+    .contact-card { background: var(--white); border: 0.5px solid var(--border); border-radius: var(--radius); padding: 20px; }
+    .contact-icon { font-size: 20px; color: var(--navy); margin-bottom: 10px; }
+    .contact-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 5px; }
+    .contact-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; margin-bottom: 12px; }
+    .contact-link { font-size: 12px; font-weight: 500; color: var(--navy); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; }
+    .contact-link:hover { text-decoration: underline; }
+
+    /* ── FOOTER SUBSCRIBE ── */
+    .page-footer { background: var(--navy); padding: 48px 24px 32px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-subscribe { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; padding-bottom: 36px; border-bottom: 0.5px solid rgba(255,255,255,0.1); margin-bottom: 28px; }
+    .fsub-hed { font-family: 'Source Serif 4', serif; font-size: 22px; font-weight: 300; color: #fff; margin-bottom: 10px; letter-spacing: -0.01em; }
+    .fsub-desc { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.65; margin-bottom: 16px; }
+    .fsub-social { display: flex; gap: 10px; margin-top: 12px; }
+    .fsoc-btn { display: flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.7); font-size: 12px; padding: 7px 14px; border-radius: var(--radius-sm); text-decoration: none; transition: background 0.2s; }
+    .fsoc-btn:hover { background: rgba(255,255,255,0.15); }
+    .fsub-form {}
+    .fsub-label { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 12px; display: block; }
+    .finput { width: 100%; background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.18); border-radius: var(--radius-sm); padding: 8px 12px; font-size: 13px; font-family: 'DM Sans', sans-serif; color: #fff; margin-bottom: 10px; }
+    .finput:focus { outline: none; border-color: rgba(255,255,255,0.4); }
+    .finput::placeholder { color: rgba(255,255,255,0.28); }
+    .fcheck-row { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .fcheck-row input { width: 13px; height: 13px; accent-color: var(--gold); }
+    .fcheck-row label { font-size: 12px; color: rgba(255,255,255,0.58); cursor: pointer; }
+    .fsubmit { width: 100%; background: var(--gold); color: var(--gold-dark); font-size: 13px; font-weight: 500; font-family: 'DM Sans', sans-serif; padding: 9px; border-radius: var(--radius-sm); border: none; cursor: pointer; margin-top: 4px; transition: background 0.2s; }
+    .fsubmit:hover { background: #d49018; }
+    .footer-nav { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .fnav-title { font-size: 10px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 10px; }
+    .fnav-link { display: block; font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 6px; text-decoration: none; }
+    .fnav-link:hover { color: rgba(255,255,255,0.85); }
+    .footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 0.5px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+    .footer-bottom span, .footer-bottom a { font-size: 11px; color: rgba(255,255,255,0.25); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+      .intro-img { order: -1; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+      .stat-card:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+      .stat-card:last-child { border-radius: 0 0 var(--radius) var(--radius); }
+      .stat-card:nth-child(2) { border-radius: 0; }
+      .stat-card:nth-child(3) { border-radius: 0; }
+      .do-grid { grid-template-columns: 1fr 1fr; }
+      .origin-block { grid-template-columns: 1fr; }
+      .origin-img { min-height: 140px; }
+      .door-grid { grid-template-columns: 1fr; }
+      .colcard-grid { grid-template-columns: 1fr; }
+      .colcard-left { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .gov-block { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-subscribe { grid-template-columns: 1fr; gap: 32px; }
+      .footer-nav { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: 1fr; }
+      .do-grid { grid-template-columns: 1fr; }
+      .hero-content { padding: 40px 24px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-left">
+      <a href="index.html" class="nav-logo">
+        <div class="nav-mark"><span>CA</span></div>
+        <div class="nav-name">Columbia<br>Association</div>
+      </a>
+      <a href="index.html" class="nav-back">
+        <i class="ti ti-arrow-left" aria-hidden="true"></i> Home
+      </a>
+    </div>
+    <a href="https://join.columbiaassociation.org" class="nav-join">Join CA</a>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero" role="banner">
+    <div class="hero-bg"></div>
+    <div class="hero-img-layer"></div>
+    <div class="hero-trees-l"></div>
+    <div class="hero-trees-r"></div>
+    <div class="hero-trees-m"></div>
+    <div class="hero-gradient"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Columbia Association</span>
+      <h1>Columbia was built on<br><em>a big idea.</em><br>We keep it that way.</h1>
+      <p class="hero-sub">For 55 years, Columbia Association has stewarded the open space, programs, and community infrastructure that make Columbia one of the most livable places in America — and we're just getting started.</p>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section section-white" aria-labelledby="intro-heading">
+    <div class="max">
+      <div class="intro-grid">
+        <div>
+          <span class="eyebrow">What is CA?</span>
+          <h2 class="section-hed" id="intro-heading">Not a parks department.<br><em>Not a gym.</em><br>Something much more.</h2>
+          <p class="prose">Columbia Association is a nonprofit community organization — but that description undersells what we actually do. We manage 43 facilities, 3,600 acres of open space, and a full calendar of community programs serving every stage of life.</p>
+          <p class="prose" style="margin-top: 16px;">We're funded by assessments on Columbia property — which means every dollar we generate goes back into the community we serve. No shareholders. No outside investors. Just Columbia.</p>
+        </div>
+        <div class="intro-img">
+          <div class="intro-img-inner"></div>
+          <span class="img-placeholder-label">Photography — Lake Kittamaqundi</span>
+          <div class="img-caption">The lakefront at Lake Kittamaqundi — the heart of Columbia</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCALE REVEAL -->
+  <section class="section section-cream" aria-labelledby="scale-heading">
+    <div class="max">
+      <div style="max-width: var(--max-prose);">
+        <span class="eyebrow">The scale of CA</span>
+        <h2 class="section-hed" id="scale-heading">Most residents don't<br>know the half of it.</h2>
+        <p class="prose">Columbia Association touches daily life in Columbia in ways that most people never fully realize. Here's what CA actually manages, maintains, and makes available to this community.</p>
+      </div>
+      <div class="stats-grid" role="list">
+        <div class="stat-card" role="listitem">
+          <div class="stat-num">3,600<span class="stat-unit"> ac</span></div>
+          <div class="stat-label">Open space preserved</div>
+          <div class="stat-desc">Parks, lakefronts, wooded pathways, and natural areas — woven through every village.</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-num">95<span class="stat-unit"> mi</span></div>
+          <div class="stat-label">Pathways and trails</div>
+          <div class="stat-desc">A connected network linking villages, facilities, and open space across the city.</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-num">23</div>
+          <div class="stat-label">Outdoor pools</div>
+          <div class="stat-desc">Lap pools, leisure pools, and splash pads — in every village, open every summer.</div>
+        </div>
+        <div class="stat-card" role="listitem">
+          <div class="stat-num">43</div>
+          <div class="stat-label">Facilities total</div>
+          <div class="stat-desc">Fitness clubs, courts, rinks, arts centers, golf courses, and more — all maintained by CA.</div>
+        </div>
+      </div>
+
+      <!-- WHAT WE DO -->
+      <div style="margin-top: 48px;">
+        <h3 style="font-family: 'Source Serif 4', serif; font-size: 20px; font-weight: 300; color: var(--navy); margin-bottom: 6px; letter-spacing: -0.01em;">What that looks like in practice</h3>
+        <p class="prose" style="margin-bottom: 0;">From competitive swim meets to senior fitness classes to village elections — CA is the connective tissue of Columbia community life.</p>
+      </div>
+      <div class="do-grid">
+        <div class="do-card">
+          <div class="do-img do-1"><span class="do-tag">Open space</span></div>
+          <div class="do-body">
+            <div class="do-title">Trails, lakes &amp; natural areas</div>
+            <div class="do-desc">CA maintains and preserves the open space covenant that Rouse built into the city's original design.</div>
+          </div>
+        </div>
+        <div class="do-card">
+          <div class="do-img do-2"><span class="do-tag">Recreation</span></div>
+          <div class="do-body">
+            <div class="do-title">Fitness, pools &amp; sports</div>
+            <div class="do-desc">Five fitness clubs, 23 pools, tennis, pickleball, golf, an ice rink, and the CA SportsPark.</div>
+          </div>
+        </div>
+        <div class="do-card">
+          <div class="do-img do-3"><span class="do-tag">Arts &amp; culture</span></div>
+          <div class="do-body">
+            <div class="do-title">Columbia Art Center &amp; Archives</div>
+            <div class="do-desc">Studios, exhibitions, classes, and a permanent archive of Columbia's history and community life.</div>
+          </div>
+        </div>
+        <div class="do-card">
+          <div class="do-img do-4"><span class="do-tag">Community</span></div>
+          <div class="do-body">
+            <div class="do-title">Programs, events &amp; village life</div>
+            <div class="do-desc">Lakefront Live, youth camps, senior programs, and the community infrastructure that makes Columbia feel like a city, not a suburb.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- INLINE SUBSCRIBE — mid-page, after the reveal -->
+      <div class="subscribe-inline" role="complementary" aria-label="Newsletter signup">
+        <div class="sub-text">
+          <strong>Stay connected to Columbia</strong>
+          <span>Get community news and CA updates in your inbox — free, weekly.</span>
+        </div>
+        <div class="sub-form">
+          <input class="sub-input" type="email" placeholder="Your email address" autocomplete="email" aria-label="Email address for newsletter" />
+          <button class="sub-btn" type="submit">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN OFFRAMP -->
+  <section class="section-sm section-cream" aria-labelledby="origin-heading">
+    <div class="max">
+      <div class="origin-block">
+        <div class="origin-img">
+          <div class="origin-img-glow"></div>
+          <div class="origin-year" aria-hidden="true">1967</div>
+          <span class="origin-img-label">Photography — Columbia Archives</span>
+        </div>
+        <div class="origin-body">
+          <span class="origin-eyebrow">The Columbia story</span>
+          <h3 class="origin-hed" id="origin-heading">Wonder why Columbia is the way it is?</h3>
+          <p class="origin-desc">In 1967, developer James Rouse set out to build a city that proved people of all backgrounds could live well together — with open space protected by covenant, villages designed for human scale, and community infrastructure built into the city's DNA. Columbia Association was created to steward that vision. Everything CA does today traces back to that original intention.</p>
+          <a href="/columbia-story" class="origin-cta">
+            Explore the Columbia story <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FRONT DOORS -->
+  <section class="section section-light" aria-labelledby="doors-heading">
+    <div class="max">
+      <div style="margin-bottom: 20px;">
+        <span class="eyebrow">Find your way in</span>
+        <h2 class="section-hed" id="doors-heading">What matters<br><em>most to you?</em></h2>
+      </div>
+      <a href="#" class="door-main" style="display: block; min-height: 200px; display: flex; align-items: flex-end;">
+        <div class="door-main-bg"></div>
+        <div class="door-main-overlay"></div>
+        <div class="door-main-content">
+          <div class="door-tag">Start here</div>
+          <div class="door-main-hed">Resident life in Columbia</div>
+          <p class="door-main-sub">Open space, village governance, community events, sustainability — what it means to live here, not just recreate here.</p>
+        </div>
+      </a>
+      <div class="door-grid">
+        <a href="#" class="door-tile dt-1">
+          <div class="dt-overlay"></div>
+          <div class="dt-content">
+            <div class="dt-hed">Parks, pathways &amp; open space</div>
+            <div class="dt-sub">Trails, lakes, and 3,600 acres</div>
+          </div>
+        </a>
+        <a href="#" class="door-tile dt-2">
+          <div class="dt-overlay"></div>
+          <div class="dt-content">
+            <div class="dt-hed">Recreation, sports &amp; wellness</div>
+            <div class="dt-sub">Pools, fitness, courts, golf</div>
+          </div>
+        </a>
+        <a href="#" class="door-tile dt-3">
+          <div class="dt-overlay"></div>
+          <div class="dt-content">
+            <div class="dt-hed">Family &amp; teen programming</div>
+            <div class="dt-sub">Camps, classes, after-school</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-white" aria-labelledby="faq-heading">
+    <div class="max-prose">
+      <span class="eyebrow">Common questions</span>
+      <h2 class="section-hed" id="faq-heading">Things people<br><em>often wonder.</em></h2>
+      <div class="faq-grid" role="list">
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+            Is CA just a gym membership?
+            <i class="ti ti-plus" aria-hidden="true"></i>
+          </div>
+          <div class="faq-a">Not even close. CA manages 43 facilities across Columbia — pools, fitness clubs, tennis, pickleball, golf, an ice rink, an arts center, and 3,600 acres of open space. CA membership gives you access to all of it. Think of it less as a gym membership and more as a key to the full city.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+            I pay an assessment — does that mean I'm already a member?
+            <i class="ti ti-plus" aria-hidden="true"></i>
+          </div>
+          <div class="faq-a">Not automatically. If you own or rent on Columbia assessed property, your assessment funds CA — and it entitles you to a free Columbia Card, which gives you discounted rates on CA programs and significant savings on membership. But full membership, which unlocks all facilities and services, is a separate step. The Columbia Card is a great first step if you're not sure you're ready.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+            What's the difference between the Columbia Card and a CA membership?
+            <i class="ti ti-plus" aria-hidden="true"></i>
+          </div>
+          <div class="faq-a">The Columbia Card is free for any Columbia assessed-property resident — owner or renter. It gives you discounted access to CA programs and services, and a meaningful discount on full membership. CA membership unlocks everything — unlimited access to all 43 facilities, pools, fitness clubs, and the full range of programming. Columbia Card holders are the ones who typically go on to become CA members.</div>
+        </div>
+        <div class="faq-item" role="listitem">
+          <div class="faq-q" tabindex="0" role="button" aria-expanded="false">
+            I don't live in Columbia — can I still access CA facilities?
+            <i class="ti ti-plus" aria-hidden="true"></i>
+          </div>
+          <div class="faq-a">Yes. CA memberships are available to non-residents too, though at a different rate than assessed-property residents. If you work in Columbia or live nearby, a CA membership can still be a great value. Visit the membership page to see all available options and current rates.</div>
+        </div>
+      </div>
+      <a href="#" class="faq-more">More questions answered <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+    </div>
+  </section>
+
+  <!-- COLUMBIA CARD + MEMBERSHIP -->
+  <section class="section section-light" aria-labelledby="membership-heading">
+    <div class="max">
+      <div style="text-align: center; margin-bottom: 28px;">
+        <span class="eyebrow">Your next step</span>
+        <h2 class="section-hed" id="membership-heading" style="text-align: center;">Ready to be part of it?</h2>
+        <p class="prose prose-center">There are two ways in. One is free and takes two minutes. The other is the full experience.</p>
+      </div>
+      <div class="colcard-grid">
+        <div class="colcard-left">
+          <div class="colcard-badge badge-green"><i class="ti ti-id" aria-hidden="true"></i> Free for Columbia residents</div>
+          <div class="colcard-sub-hed">The Columbia Card — yours to claim.</div>
+          <div class="card-visual" aria-label="Columbia Card illustration">
+            <div>
+              <div class="cv-name">Columbia Card</div>
+              <div class="cv-sub">Columbia Association</div>
+            </div>
+            <div class="cv-chip" aria-hidden="true"></div>
+          </div>
+          <p class="colcard-desc">If you own or rent on Columbia assessed property, the Columbia Card is free — and most residents don't know it exists. It's your official connection to this community.</p>
+          <div class="colcard-perks">
+            <div class="perk"><div class="perk-dot pd-green" aria-hidden="true"></div>Discounted rates on all CA programs and services</div>
+            <div class="perk"><div class="perk-dot pd-green" aria-hidden="true"></div>Significant savings on CA memberships</div>
+            <div class="perk"><div class="perk-dot pd-green" aria-hidden="true"></div>Your official connection to Columbia community life</div>
+          </div>
+          <a href="#" class="btn-green">Get your Columbia Card</a>
+          <p class="btn-sub">Free for owners and renters on Columbia assessed land.</p>
+        </div>
+        <div class="colcard-right">
+          <div class="colcard-badge badge-blue"><i class="ti ti-star" aria-hidden="true"></i> The full experience</div>
+          <div class="colcard-sub-hed">CA Membership — everything included.</div>
+          <p class="colcard-bridge">Columbia Card holders save significantly on all membership tiers. Your Card is the first step.</p>
+          <p class="colcard-desc">Unlimited access to 43 facilities — pools, fitness clubs, racquet sports, golf, arts, and 3,600 acres of open space. One membership. The whole city.</p>
+          <div class="colcard-perks">
+            <div class="perk"><div class="perk-dot pd-navy" aria-hidden="true"></div>43 facilities across every Columbia village</div>
+            <div class="perk"><div class="perk-dot pd-navy" aria-hidden="true"></div>23 outdoor pools opening May 23</div>
+            <div class="perk"><div class="perk-dot pd-navy" aria-hidden="true"></div>Fitness, aquatics, arts, golf, and more</div>
+          </div>
+          <a href="https://join.columbiaassociation.org" class="btn-navy">Explore membership options &rarr;</a>
+          <p class="btn-sub">See everything included at join.columbiaassociation.org</p>
+        </div>
+      </div>
+      <div class="offer-strip">
+        <div>
+          <div class="offer-strip-label">Summer offer</div>
+          <div class="offer-strip-text">Join now — pay nothing until July. 23 pools open May 23.</div>
+        </div>
+        <a href="https://join.columbiaassociation.org" class="offer-strip-btn">Get the offer &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section class="section section-white" aria-labelledby="gov-heading">
+    <div class="max">
+      <div class="gov-block">
+        <div class="gov-text">
+          <span class="eyebrow">Community voice</span>
+          <h2 class="section-hed" id="gov-heading">This community<br><em>governs itself.</em></h2>
+          <p class="prose">Columbia was designed with democratic governance built in. Each of Columbia's ten villages elects its own board representatives, and residents have a direct voice in how CA operates and invests. That's not a feature of a commercial gym — it's the structure of a community that takes itself seriously.</p>
+          <p class="prose" style="margin-top: 16px;">Village elections are open to all Columbia residents. Board meetings are public. If you live here, you have a say in how this community evolves.</p>
+          <a href="#" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; font-size: 13px; font-weight: 500; color: var(--navy); text-decoration: none;">
+            Learn about village governance <i class="ti ti-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="gov-aside">
+          <div class="gov-stat">
+            <div class="gov-stat-num">10</div>
+            <div class="gov-stat-label">Columbia villages, each with elected representation</div>
+          </div>
+          <div class="gov-stat">
+            <div class="gov-stat-num">~100K</div>
+            <div class="gov-stat-label">Columbia residents with a community voice</div>
+          </div>
+          <div class="gov-stat">
+            <div class="gov-stat-num">55+</div>
+            <div class="gov-stat-label">Years of community-governed open space stewardship</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PATHS -->
+  <section class="section section-light" aria-labelledby="contact-heading">
+    <div class="max">
+      <div style="max-width: var(--max-prose);">
+        <span class="eyebrow">Get in touch</span>
+        <h2 class="section-hed" id="contact-heading">Have a question?<br><em>We're easy to reach.</em></h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon"><i class="ti ti-id" aria-hidden="true"></i></div>
+          <div class="contact-title">Membership questions</div>
+          <div class="contact-desc">Not sure which membership is right for you, or want to learn more about the Columbia Card?</div>
+          <a href="#" class="contact-link">Talk to our team <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="ti ti-map-pin" aria-hidden="true"></i></div>
+          <div class="contact-title">Facility &amp; program info</div>
+          <div class="contact-desc">Looking for hours, schedules, or specific information about a CA facility or program?</div>
+          <a href="#" class="contact-link">Find what you need <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+        <div class="contact-card">
+          <div class="contact-icon"><i class="ti ti-message" aria-hidden="true"></i></div>
+          <div class="contact-title">General inquiries</div>
+          <div class="contact-desc">Anything else — partnerships, press, community questions, or just not sure where to start.</div>
+          <a href="#" class="contact-link">Contact CA <i class="ti ti-arrow-right" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGE FOOTER -->
+  <footer class="page-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-subscribe">
+        <div>
+          <h2 class="fsub-hed">Stay connected<br>to Columbia.</h2>
+          <p class="fsub-desc">Community news, event updates, and stories from across Columbia — in your inbox, on your schedule. No spam. Just Columbia.</p>
+          <div class="fsub-social">
+            <a href="#" class="fsoc-btn"><i class="ti ti-brand-instagram" aria-hidden="true"></i> Instagram</a>
+            <a href="#" class="fsoc-btn"><i class="ti ti-brand-tiktok" aria-hidden="true"></i> TikTok</a>
+            <a href="#" class="fsoc-btn"><i class="ti ti-brand-facebook" aria-hidden="true"></i> Facebook</a>
+          </div>
+        </div>
+        <div class="fsub-form">
+          <span class="fsub-label">Email newsletters</span>
+          <input class="finput" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name" />
+          <input class="finput" type="email" placeholder="Email address" autocomplete="email" aria-label="Email address" />
+          <div class="fcheck-row">
+            <input type="checkbox" id="fc1" />
+            <label for="fc1">CA Digest — weekly community news</label>
+          </div>
+          <div class="fcheck-row">
+            <input type="checkbox" id="fc2" />
+            <label for="fc2">Do More — events &amp; Lakefront Live</label>
+          </div>
+          <div class="fcheck-row">
+            <input type="checkbox" id="fc3" />
+            <label for="fc3">Do More — family edition</label>
+          </div>
+          <div class="fcheck-row">
+            <input type="checkbox" id="fc4" />
+            <label for="fc4">Tell me more about CA membership</label>
+          </div>
+          <button class="fsubmit" type="submit">Subscribe</button>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div>
+          <div class="fnav-title">Explore CA</div>
+          <a href="#" class="fnav-link">Resident life</a>
+          <a href="#" class="fnav-link">Parks, pathways &amp; open space</a>
+          <a href="#" class="fnav-link">Recreation, sports &amp; wellness</a>
+          <a href="#" class="fnav-link">Family &amp; teen programming</a>
+          <a href="/columbia-story" class="fnav-link">The Columbia story</a>
+        </div>
+        <div>
+          <div class="fnav-title">Membership</div>
+          <a href="#" class="fnav-link">Join CA</a>
+          <a href="#" class="fnav-link">Get your Columbia Card</a>
+          <a href="#" class="fnav-link">Member login</a>
+          <a href="#" class="fnav-link">Current offers</a>
+          <a href="https://join.columbiaassociation.org" class="fnav-link">join.columbiaassociation.org</a>
+        </div>
+        <div>
+          <div class="fnav-title">Organization</div>
+          <a href="#" class="fnav-link">Governance &amp; board</a>
+          <a href="#" class="fnav-link">Village elections</a>
+          <a href="#" class="fnav-link">Columbia Archives</a>
+          <a href="#" class="fnav-link">Annual report</a>
+          <a href="#" class="fnav-link">Contact CA</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Columbia Association. All rights reserved.</span>
+        <div style="display: flex; gap: 16px;">
+          <a href="#">Privacy</a>
+          <a href="#">Accessibility</a>
+          <a href="#">Additional links</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('.faq-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = this.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        } else {
+          btn.setAttribute('aria-expanded', 'false');
+        }
+      });
+      btn.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); this.click(); }
+      });
+    });
+  </script>
+
+</body>
+</html>
